@@ -1,7 +1,7 @@
 LOIC
 ====
 
-An unofficial port of the Low Orbit Ion Cannon (LOIC) software used for flooding packets; Now on mobile! Simply lock on to a target, specify the numerous attack options and the desired settings, and FIRE!
+An unofficial port of the Low Orbit Ion Cannon (LOIC) software used for flooding packets; Now on mobile! LOIC is licensed under Apache 2.0. Simply lock on to a target, specify the numerous attack options and the desired settings, and FIRE!
 
 Attempting to use an outrageous amount of threads will crash the application. A higher-end device with at least 1GB of RAM is recommended.
 
