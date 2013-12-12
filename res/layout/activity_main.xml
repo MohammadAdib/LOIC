@@ -5,25 +5,21 @@
     android:layout_height="fill_parent"
     android:background="@color/background"
     android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:scrollbars="none" >
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical" >
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/banner" />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:text="1. Select your target"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -130,8 +126,9 @@
             android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
+            android:background="#22000000"
             android:gravity="center"
+            android:padding="4dp"
             android:text="Selected Target"
             android:textColor="@color/text" />
 
@@ -149,7 +146,9 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2. Attack Options"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="2. Settings"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <LinearLayout
@@ -276,8 +275,10 @@
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:text="3. Ready?"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -296,6 +297,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Elapsed Time: 0.000s"
+            android:background="#22000000"
             android:textSize="15dp" />
 
         <TextView
@@ -314,8 +316,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:background="#22000000"
             android:text="Packets/sec: 0"
             android:textSize="15dp" />
+
     </LinearLayout>
 
 </ScrollView>

@@ -19,8 +19,9 @@ package genius.mohammad.loic;
 import java.net.InetAddress;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -85,10 +86,17 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 		this.mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "LOICLock");
 		Spinner methodS = (Spinner) findViewById(R.id.methodList);
 		methodS.setOnItemSelectedListener(this);
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-		if(prefs.getBoolean("warning", true)) {
-			Intent i = new Intent(this, WarningActivity.class);
-			startActivity(i);
+		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		if (prefs.getBoolean("warning2", true)) {
+			new AlertDialog.Builder(this).setTitle("Terms of Use").setMessage("LOIC is a tool for network stress testing. The developer assumes no responsibilities for unintended use of this tool. LOIC Responsibly!").setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					prefs.edit().putBoolean("warning2", false).commit();
+				}
+			}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					prefs.edit().putBoolean("warning2", true).commit();
+				}
+			}).show();
 		}
 	}
 
@@ -97,13 +105,13 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 		super.onDestroy();
 		serviceDenier.stop();
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 		if (ServiceDenier.firing) {
 			serviceDenier.stop();
 			fireButton.setText("FIRE");
-		}else{
+		} else {
 			super.onBackPressed();
 		}
 	}
@@ -171,15 +179,15 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 								});
 								break;
 							}
-							
-							if(ServiceDenier.error) {
+
+							if (ServiceDenier.error) {
 								serviceDenier.stop();
 								tvTime.setText("Elapsed Time: " + (System.currentTimeMillis() - TCPSocketThread.startTime) / 1000.0 + "s");
 								tvHits.setText("Exception Occurred");
 								tvPacketsPerSec.setText("Error - Check log for details");
 								b.setText("FIRE");
 							}
-							
+
 							try {
 								Thread.sleep(50);
 							} catch (Exception e) {
@@ -361,7 +369,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 		EditText timeoutET = (EditText) findViewById(R.id.timeoutET);
 		EditText portET = (EditText) findViewById(R.id.portET);
 		EditText messageET = (EditText) findViewById(R.id.messageET);
-		switch(arg2) {
+		switch (arg2) {
 		case 0:
 			timeoutET.setEnabled(true);
 			portET.setEnabled(true);
@@ -382,6 +390,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 	}
 
 	public void onNothingSelected(AdapterView<?> arg0) {
-		
+
 	}
 }
