@@ -34,6 +34,7 @@ public class HTTPSocketThread implements Runnable {
 		this.pause = pause;
 	}
 
+	@Override
 	public void run() {
 		count = 0;
 		startTime = System.currentTimeMillis();
